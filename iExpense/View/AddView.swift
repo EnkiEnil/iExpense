@@ -7,14 +7,21 @@
 import SwiftUI
 
 struct AddView: View {
-    @ObservedObject var personalExpenses: PersonalExpenses
-    
+    @ObservedObject var expenses: Expenses
+    @ObservedObject var bizExpenses: BusinessExpenses
     
     @Environment(\.dismiss) var dismiss
+    
+    
+    //MARK: Expenses Properties
     
     @State var name = ""
     @State var type = "Personal"
     @State var amount = 0.0
+    
+    
+    //MARK: Amount Styling
+    
     @State var amountStyle1 = false
     @State var amountStyle2 = false
     @State var amountStyle3 = false
@@ -50,7 +57,10 @@ struct AddView: View {
     }
     
     
-    let types = ["Personal"]
+        
+   let types = ["Personal", "Business"]
+
+    
     
     var body: some View {
         NavigationStack {
@@ -60,7 +70,8 @@ struct AddView: View {
                 
                 Picker("Type", selection: $type) {
                     ForEach(types, id:\.self) {
-                        Text($0)
+                        items in
+                        Text(items)
                     }
                 }.pickerStyle(.segmented)
                 
@@ -74,8 +85,15 @@ struct AddView: View {
                 }
                 
                 Button {
-                    let item = ExpenseItem(name: name, type: type, amount: amount)
-                    personalExpenses.personalItems.append(item)
+                    let item = ExpenseItem(name: name, type: types[0], amount: amount)
+                    
+                    if type.contains("Personal") {
+                        expenses.personalExpenses.append(item)
+                    }
+                    else {
+                        bizExpenses.businessExpenses.append(item)
+                    }
+                    
                     dismiss()
                 } label: {
                     Text("Save")
@@ -87,12 +105,13 @@ struct AddView: View {
         }.navigationTitle("Add Expense")
   
     }
+    
 }
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AddView(personalExpenses: PersonalExpenses())
+            AddView(expenses: Expenses(), bizExpenses: BusinessExpenses())
         }
     }
 }

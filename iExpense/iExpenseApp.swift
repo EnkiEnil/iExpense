@@ -12,7 +12,7 @@ struct iExpenseApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                ExpView()
             }
         }
     }
