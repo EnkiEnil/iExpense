@@ -85,7 +85,7 @@ struct AddView: View {
                 }
                 
                 Button {
-                    let item = ExpenseItem(name: name, type: types[0], amount: amount)
+                    let item = ExpenseItem(name: name, type: typeDepict(type: types), amount: amount)
                     
                     if type.contains("Personal") {
                         expenses.personalExpenses.append(item)
@@ -104,6 +104,20 @@ struct AddView: View {
             
         }.navigationTitle("Add Expense")
   
+    }
+    
+    func typeDepict(type: [String]) -> String {
+        let typeSelection = types
+        var selected = ""
+        
+        if typeSelection[0] == "Personal" {
+            selected = typeSelection[0]
+        
+        } else {
+            selected = typeSelection[1]
+        }
+        
+        return selected
     }
     
 }

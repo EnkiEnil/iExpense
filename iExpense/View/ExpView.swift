@@ -7,18 +7,12 @@
 
 import SwiftUI
 
-protocol bizTotal {
-    var amount:Double {get set}
-}
 
 struct ExpView: View {
     //MARK: StateObjects
     @StateObject var expenses = Expenses()
     @StateObject var bizExpenses = BusinessExpenses()
 
-//    //MARK: Sheet Boolean
-//    let userDefaultPersonal = UserDefaults.standard.bool(forKey: "PersonalItems")
-//    let userDefaultBusiness = UserDefaults.standard.bool(forKey: "BusinessItems")
     //MARK: Total
     
     @State var addingCost = false
