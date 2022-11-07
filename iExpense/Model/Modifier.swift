@@ -25,7 +25,7 @@ struct ExpenseStyle: ViewModifier {
         default:
             content
                 .font(.headline)
-                .foregroundColor(.red)
+                .foregroundColor(.purple)
         }
     }
 }

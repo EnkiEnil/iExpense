@@ -8,8 +8,16 @@ import SwiftUI
 
 struct AddView: View {
     @ObservedObject var expenses: Expenses
-    @ObservedObject var bizExpenses: BusinessExpenses
+    @ObservedObject var busExpenses: BusinessExpenses
     
+    enum Field: Hashable {
+        case amount
+    }
+    
+    @FocusState private var enterAmount: Field?
+    
+    //MARK: Environment Objects
+  //  @EnvironmentObject var busExpenses: BusinessExpenses
     @Environment(\.dismiss) var dismiss
     
     
@@ -57,9 +65,11 @@ struct AddView: View {
     }
     
     
-        
-   let types = ["Personal", "Business"]
-
+    @State var isEditingTrue = false
+    @State var textEditing = "Enter Amount"
+    
+    let types = ["Personal", "Business"]
+    
     
     
     var body: some View {
@@ -75,7 +85,8 @@ struct AddView: View {
                     }
                 }.pickerStyle(.segmented)
                 
-                TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7)
+                
+                TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).focused($enterAmount, equals: .amount)
             }
             .toolbar {
                 Button{
@@ -87,23 +98,31 @@ struct AddView: View {
                 Button {
                     let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount)
                     
+                    
+//                    if amount.isZero {
+//                        enterAmount = .amount
+//                    }else {
+//                        isEdit(isEditing: isEditingTrue)
+//                    }
+                    
                     if type.contains("Personal") {
                         expenses.personalExpenses.append(item)
                     }
                     else {
-                        bizExpenses.businessExpenses.append(item)
+                        busExpenses.businessExpenses.append(item)
+                        //bizExpenses.businessExpenses.append(item)
                     }
                     
                     dismiss()
                 } label: {
                     Text("Save")
                 }
-            
+                
             }
             
             
         }.navigationTitle("Add Expense")
-  
+        
     }
     
     func typeDepict(typeSelection: [String]) -> String {
@@ -111,7 +130,7 @@ struct AddView: View {
         
         if type == "Personal" {
             selected = typeSelection[0]
-        
+            
         } else {
             selected = typeSelection[1]
         }
@@ -119,12 +138,26 @@ struct AddView: View {
         return selected
     }
     
+//    @discardableResult func isEdit(isEditing: Bool) -> some View {
+//
+//
+//        let textValue = TextField("Amount", text: $textEditing) { item in
+//            if item == isEditing {
+//                textEditing = ""
+//            }
+//
+//        }
+//
+//        return textValue
+//
+//    }
+    
 }
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AddView(expenses: Expenses(), bizExpenses: BusinessExpenses())
+            AddView(expenses: Expenses(), busExpenses: BusinessExpenses())
         }
     }
 }
