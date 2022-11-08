@@ -124,13 +124,37 @@ struct ExpView: View {
                     HStack {
                         Spacer()
                         VStack {
+                            Text("Personal").foregroundColor(.primary)
+                            Button {
+                                addingPersonalExpenses.toggle()
+                            } label: {
+                                    Text(reducePersonal(), format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                        .padding()
+                                        .background(amountStyling ? .green : amountStyling_2 ? .orange : amountStyling_3 ? .purple : .black)
+                                        .foregroundColor(amountStyling ? .white : amountStyling_2 ? .white : amountStyling_3 ? .white : .white)
+                                        .cornerRadius(10).onReceive(expenses.$personalExpenses) {
+                                            $0.forEach { item in
+                                                savedPersonalTotal = item.amount
+                                            }
+                                        }.onChange(of: expenses.personalExpenses) {
+                                            $0.forEach { savedPersonalTotal = $0.amount
+                                            }
+                                        }
+                                }.sheet(isPresented: $addingPersonalExpenses) {
+                                    PersonalExpenseSheet(expenses: expenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                            }
+          
+                        }
+                        
+                        Spacer()
+                        
+                        VStack {
                             Text("Business").foregroundColor(.primary)
                             
                             Button {
                                 addingBusinessExpenses.toggle()
                             } label: {
-                                ForEach(bizExpenses.businessExpenses) {
-                                    Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                    Text(reduceBusiness(), format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                                         .padding()
                                         .background(bizAmountStyling ? .green : bizAmountStyling2 ? .orange : bizAmountStyling3 ? .purple : .black)
                                         .foregroundColor(bizAmountStyling ? .white : bizAmountStyling2 ? .white : bizAmountStyling3 ? .white : .white)
@@ -146,36 +170,6 @@ struct ExpView: View {
                                 .sheet(isPresented: $addingBusinessExpenses) {
                                     BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
                                 }
-                            }
-                               
-
-                          
-                        }
-                        Spacer()
-                        VStack {
-                            Text("Personal").foregroundColor(.primary)
-                            Button {
-                                addingPersonalExpenses.toggle()
-                            } label: {
-                                
-                                ForEach(expenses.personalExpenses) {
-                                    Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                        .padding()
-                                        .background(amountStyling ? .green : amountStyling_2 ? .orange : amountStyling_3 ? .purple : .black)
-                                        .foregroundColor(amountStyling ? .white : amountStyling_2 ? .white : amountStyling_3 ? .white : .white)
-                                        .cornerRadius(10).onReceive(expenses.$personalExpenses) {
-                                            $0.forEach { item in
-                                                savedPersonalTotal = item.amount
-                                            }
-                                        }.onChange(of: expenses.personalExpenses) {
-                                            $0.forEach { savedPersonalTotal = $0.amount
-                                            }
-                                        }
-                                }.sheet(isPresented: $addingPersonalExpenses) {
-                                    PersonalExpenseSheet(expenses: expenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
-                                }
-                            }
-          
                         }
                         Spacer()
                     }
@@ -195,7 +189,26 @@ struct ExpView: View {
                 AddView(expenses: expenses, busExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
             }
         }
+    }
     
+    func reducePersonal() -> Double {
+        var storedValues = 0.0
+
+        for value in expenses.personalExpenses {
+            storedValues += value.amount
+        }
+
+        return storedValues
+    }
+    
+    func reduceBusiness() -> Double {
+        var storedValues = 0.0
+        
+        for value in bizExpenses.businessExpenses {
+            storedValues += value.amount
+        }
+        
+        return storedValues
     }
 }
 

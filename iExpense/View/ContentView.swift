@@ -13,7 +13,12 @@ struct ContentView: View {
     var body: some View {
         
         NavigationStack {
-            ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
+            NavigationStack {
+                
+                ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
+             
+                Spacer()
+            }
         }
     }
 }
