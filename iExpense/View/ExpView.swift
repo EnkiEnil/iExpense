@@ -124,35 +124,6 @@ struct ExpView: View {
                     HStack {
                         Spacer()
                         VStack {
-                            Text("Business").foregroundColor(.primary)
-                            
-                            Button {
-                                addingBusinessExpenses.toggle()
-                            } label: {
-                                ForEach(bizExpenses.businessExpenses) {
-                                    Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                        .padding()
-                                        .background(bizAmountStyling ? .green : bizAmountStyling2 ? .orange : bizAmountStyling3 ? .purple : .black)
-                                        .foregroundColor(bizAmountStyling ? .white : bizAmountStyling2 ? .white : bizAmountStyling3 ? .white : .white)
-                                        .cornerRadius(10).onReceive(bizExpenses.$businessExpenses) {
-                                            $0.forEach { item in
-                                                savedBusTotal = item.amount
-                                            }
-                                        }
-                                }.onChange(of: bizExpenses.businessExpenses, perform: {
-                                    $0.forEach { savedBusTotal = $0.amount
-                                    }
-                                })
-                                .sheet(isPresented: $addingBusinessExpenses) {
-                                    BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
-                                }
-                            }
-                               
-
-                          
-                        }
-                        Spacer()
-                        VStack {
                             Text("Personal").foregroundColor(.primary)
                             Button {
                                 addingPersonalExpenses.toggle()
@@ -176,6 +147,32 @@ struct ExpView: View {
                                 }
                             }
           
+                        }
+                        Spacer()
+                        VStack {
+                            Text("Business").foregroundColor(.primary)
+                            
+                            Button {
+                                addingBusinessExpenses.toggle()
+                            } label: {
+                                ForEach(bizExpenses.businessExpenses) {
+                                    Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                        .padding()
+                                        .background(bizAmountStyling ? .green : bizAmountStyling2 ? .orange : bizAmountStyling3 ? .purple : .black)
+                                        .foregroundColor(bizAmountStyling ? .white : bizAmountStyling2 ? .white : bizAmountStyling3 ? .white : .white)
+                                        .cornerRadius(10).onReceive(bizExpenses.$businessExpenses) {
+                                            $0.forEach { item in
+                                                savedBusTotal = item.amount
+                                            }
+                                        }
+                                }.onChange(of: bizExpenses.businessExpenses, perform: {
+                                    $0.forEach { savedBusTotal = $0.amount
+                                    }
+                                })
+                                .sheet(isPresented: $addingBusinessExpenses) {
+                                    BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                }
+                            }
                         }
                         Spacer()
                     }
