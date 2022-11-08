@@ -11,5 +11,5 @@ struct ExpenseItem: Identifiable, Equatable, Codable, Hashable {
     var id = UUID()
     var name: String
     var type: String
-    var amount: Double
+    var amount = 0.0
 }

@@ -139,9 +139,12 @@ struct ExpView: View {
                                                 savedBusTotal = item.amount
                                             }
                                         }
-                                }
+                                }.onChange(of: bizExpenses.businessExpenses, perform: {
+                                    $0.forEach { savedBusTotal = $0.amount
+                                    }
+                                })
                                 .sheet(isPresented: $addingBusinessExpenses) {
-                                    BusinessExpenseSheet(bizExpenses: BusinessExpenses()).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                    BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
                                 }
                             }
                                
@@ -194,23 +197,6 @@ struct ExpView: View {
         }
     
     }
-//    
-//    func ifZero(expenses: Expenses) -> Double {
-//        
-//        var updatedNumber = 0.0
-//        
-//        for i in expenses.personalExpenses {
-//            if i.amount == nil {
-//                savedPersonalTotal = 0.0
-//            }
-//            else {
-//                updatedNumber = savedPersonalTotal
-//            }
-//
-//        }
-//        
-//        return updatedNumber
-//    }
 }
 
 struct ExpView_Previews: PreviewProvider {
