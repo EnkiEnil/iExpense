@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PersonalExpenseSheet: View {
     
-    @StateObject var expenses = Expenses()
+    @ObservedObject var expenses: Expenses
     
     var body: some View {
         NavigationStack {
@@ -52,7 +52,7 @@ struct PersonalExpenseSheet: View {
 struct PersonalExpenseSheet_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PersonalExpenseSheet()
+            PersonalExpenseSheet(expenses: Expenses())
         }
     }
 }

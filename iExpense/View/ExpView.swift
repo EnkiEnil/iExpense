@@ -10,19 +10,19 @@ import SwiftUI
 
 struct ExpView: View {
     //MARK: StateObjects
-    @ObservedObject var expenses = Expenses()
-    @ObservedObject var bizExpenses = BusinessExpenses()
+    @ObservedObject var expenses: Expenses
+    @ObservedObject var bizExpenses: BusinessExpenses
 
     
     //MARK: Boolean Values
-    @State var addingCost = false
-    @State var addingBusinessExpenses = false
-    @State var addingPersonalExpenses = false
+    @State private var addingCost = false
+    @State private var addingBusinessExpenses = false
+    @State private var addingPersonalExpenses = false
     
     //MARK: Saved Total Display
     
-    @State private var savedBusTotal = Double()
-    @State private var savedPersonalTotal = Double()
+    @State private var savedBusTotal = 0.0
+    @State private var savedPersonalTotal = 0.0
     
 
     //MARK: Amounts for styling
@@ -129,19 +129,22 @@ struct ExpView: View {
                             Button {
                                 addingBusinessExpenses.toggle()
                             } label: {
-                                Text(savedBusTotal, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                    .padding()
-                                    .background(bizAmountStyling ? .green : bizAmountStyling2 ? .orange : bizAmountStyling3 ? .purple : .black)
-                                    .foregroundColor(bizAmountStyling ? .white : bizAmountStyling2 ? .white : bizAmountStyling3 ? .white : .white)
-                                    .cornerRadius(10).onReceive(bizExpenses.$businessExpenses) {
-                                        $0.forEach { item in
-                                            savedBusTotal = item.amount
+                                ForEach(bizExpenses.businessExpenses) {
+                                    Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                        .padding()
+                                        .background(bizAmountStyling ? .green : bizAmountStyling2 ? .orange : bizAmountStyling3 ? .purple : .black)
+                                        .foregroundColor(bizAmountStyling ? .white : bizAmountStyling2 ? .white : bizAmountStyling3 ? .white : .white)
+                                        .cornerRadius(10).onReceive(bizExpenses.$businessExpenses) {
+                                            $0.forEach { item in
+                                                savedBusTotal = item.amount
+                                            }
                                         }
-                                    }
+                                }
+                                .sheet(isPresented: $addingBusinessExpenses) {
+                                    BusinessExpenseSheet(bizExpenses: BusinessExpenses()).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                }
                             }
-                            .sheet(isPresented: $addingBusinessExpenses) {
-                                BusinessExpenseSheet(bizExpenses: BusinessExpenses()).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
-                            }
+                               
 
                           
                         }
@@ -151,24 +154,25 @@ struct ExpView: View {
                             Button {
                                 addingPersonalExpenses.toggle()
                             } label: {
-                                Text(savedPersonalTotal, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                                    .padding()
-                                    .background(amountStyling ? .green : amountStyling_2 ? .orange : amountStyling_3 ? .purple : .black)
-                                    .foregroundColor(amountStyling ? .white : amountStyling_2 ? .white : amountStyling_3 ? .white : .white)
-                                    .cornerRadius(10).onReceive(expenses.$personalExpenses) {
-                                        $0.forEach { item in
-                                            savedPersonalTotal = item.amount
+                                
+                                ForEach(expenses.personalExpenses) {
+                                    Text($0.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                        .padding()
+                                        .background(amountStyling ? .green : amountStyling_2 ? .orange : amountStyling_3 ? .purple : .black)
+                                        .foregroundColor(amountStyling ? .white : amountStyling_2 ? .white : amountStyling_3 ? .white : .white)
+                                        .cornerRadius(10).onReceive(expenses.$personalExpenses) {
+                                            $0.forEach { item in
+                                                savedPersonalTotal = item.amount
+                                            }
+                                        }.onChange(of: expenses.personalExpenses) {
+                                            $0.forEach { savedPersonalTotal = $0.amount
+                                            }
                                         }
-                                    }.onChange(of: expenses.personalExpenses) {
-                                        $0.forEach { savedPersonalTotal = $0.amount
-                                        }
-                                    }
-                            }.sheet(isPresented: $addingPersonalExpenses) {
-                                PersonalExpenseSheet().presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                }.sheet(isPresented: $addingPersonalExpenses) {
+                                    PersonalExpenseSheet(expenses: expenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                }
                             }
-
-                    
-                            
+          
                         }
                         Spacer()
                     }
@@ -190,12 +194,29 @@ struct ExpView: View {
         }
     
     }
+//    
+//    func ifZero(expenses: Expenses) -> Double {
+//        
+//        var updatedNumber = 0.0
+//        
+//        for i in expenses.personalExpenses {
+//            if i.amount == nil {
+//                savedPersonalTotal = 0.0
+//            }
+//            else {
+//                updatedNumber = savedPersonalTotal
+//            }
+//
+//        }
+//        
+//        return updatedNumber
+//    }
 }
 
 struct ExpView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ExpView()
+            ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
         }
     }
 }
