@@ -25,6 +25,13 @@ class Expenses: ObservableObject {
         }
         personalExpenses = []
     }
+    func removePersonal(at onset: IndexSet) {
+        personalExpenses.remove(atOffsets: onset)
+    }
+    
+    func move(indices: IndexSet, newOffset: Int ) {
+        personalExpenses.move(fromOffsets: indices, toOffset: newOffset)
+    }
 }
 
 class BusinessExpenses: ObservableObject {
@@ -44,5 +51,13 @@ class BusinessExpenses: ObservableObject {
 
         }
         businessExpenses = []
+        
+    }
+    func removeBusiness(at onset: IndexSet) {
+        businessExpenses.remove(atOffsets: onset)
+    }
+    
+    func move(indices: IndexSet, newOffset: Int ) {
+        businessExpenses.move(fromOffsets: indices, toOffset: newOffset)
     }
 }

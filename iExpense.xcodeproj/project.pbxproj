@@ -52,8 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				9AF151B228EC1E2500BC1D74 /* ExpenseItem.swift */,
-				9AF151BA28EF393A00BC1D74 /* Expenses.swift */,
-				9A2BB1162913C5AB00995529 /* Modifier.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -61,8 +59,11 @@
 		9A2BB1132913AFB600995529 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9AF151B428EC255B00BC1D74 /* AddView.swift */,
 				9A2BB1232917EE2700995529 /* ContentView.swift */,
+				9A2BB1142913C58800995529 /* ExpView.swift */,
+				9AF151B428EC255B00BC1D74 /* AddView.swift */,
+				9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */,
+				9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -70,6 +71,7 @@
 		9A2BB11E2917EB7800995529 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9A2BB1162913C5AB00995529 /* Modifier.swift */,
 				9A2BB1212917EBD800995529 /* Styling.swift */,
 			);
 			path = Extensions;
@@ -78,9 +80,7 @@
 		9A2BB125291926FF00995529 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9A2BB1142913C58800995529 /* ExpView.swift */,
-				9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */,
-				9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */,
+				9AF151BA28EF393A00BC1D74 /* Expenses.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -104,11 +104,11 @@
 		9AF151A128EAE60A00BC1D74 /* iExpense */ = {
 			isa = PBXGroup;
 			children = (
-				9A2BB125291926FF00995529 /* ViewModel */,
 				9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */,
+				9A2BB1122913AFAC00995529 /* Model */,
+				9A2BB125291926FF00995529 /* ViewModel */,
 				9A2BB11E2917EB7800995529 /* Extensions */,
 				9A2BB1132913AFB600995529 /* View */,
-				9A2BB1122913AFAC00995529 /* Model */,
 				9AF151A628EAE60A00BC1D74 /* Assets.xcassets */,
 				9AF151A828EAE60A00BC1D74 /* Preview Content */,
 			);

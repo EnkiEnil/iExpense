@@ -31,19 +31,28 @@ struct PersonalExpenseSheet: View {
                             Spacer()
                             
                             Text(personalItems.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")).expenseStyle(for: personalItems)
-                            }
-                        }.onDelete(perform: removePersonal)
-                    }
+                        }
+                    }.onDelete(perform: {
+                        IndexSet in
+                        expenses.removePersonal(at: IndexSet)
+                    })
+                    .onMove(perform: {
+                        IndexSet, newOffset in
+                        expenses.move(indices: IndexSet, newOffset: newOffset)
+                    })
                 }
+            }.toolbar {
+                EditButton()
             }
         }
-    func removePersonal(at onset: IndexSet) {
-        expenses.personalExpenses.remove(atOffsets: onset)
     }
+    
 }
 
 struct PersonalExpenseSheet_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalExpenseSheet()
+        NavigationStack {
+            PersonalExpenseSheet()
+        }
     }
 }
