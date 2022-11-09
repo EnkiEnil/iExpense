@@ -24,8 +24,10 @@ struct BusinessExpenseSheet: View {
                                 
                                 Section {
                                     
-                                    Text(businessItems.name)
-                            
+                                    Text(businessItems.name).padding(.bottom).font(.title)
+                                    Text("Transaction date:").padding(.bottom, 2).font(.headline)
+                                    Text("\(businessItems.date)").padding(.trailing).font(.subheadline)
+                                    Text(businessItems.category)
                                     
                                 }
                             }

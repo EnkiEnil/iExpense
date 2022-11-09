@@ -23,8 +23,10 @@ struct PersonalExpenseSheet: View {
                                 
                                 Section {
                                     
-                                    Text(personalItems.name)
-                                    
+                                    Text(personalItems.name).padding(.bottom).font(.title)
+                                    Text("Transaction date:").padding(.bottom, 2).font(.headline)
+                                    Text("\(personalItems.date)").padding(.trailing).font(.subheadline)
+                                    Text("Category: \(personalItems.category)").padding([.trailing, .top]).font(.callout)
                                     
                                 }
                             }
