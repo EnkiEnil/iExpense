@@ -12,4 +12,6 @@ struct ExpenseItem: Identifiable, Equatable, Codable, Hashable {
     var name: String
     var type: String
     var amount = 0.0
+    var date: Date
+    var category: String
 }

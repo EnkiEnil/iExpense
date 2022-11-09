@@ -14,25 +14,28 @@ struct AddView: View {
         case amount
     }
     
-    @FocusState private var enterAmount: Field?
-    
     //MARK: Environment Objects
-  //  @EnvironmentObject var busExpenses: BusinessExpenses
     @Environment(\.dismiss) var dismiss
     
     
     //MARK: Expenses Properties
     
-    @State var name = ""
-    @State var type = "Personal"
-    @State var amount = 0.0
+    @State private var name = ""
+    @State private var type = "Personal"
+    @State private var amount = 0.0
+    @State private var date = Date()
+    @State private var selectedCat = "No Category Selected"
     
+    let businessCategoryTypes = ["None", "Office supplies", "Wages", "Taxes"]
+    let personalCatorgyTypes = ["None", "Food", "Housing", "Fun"]
+    
+    let types = ["Personal", "Business"]
     
     //MARK: Amount Styling
     
-    @State var amountStyle1 = false
-    @State var amountStyle2 = false
-    @State var amountStyle3 = false
+    @State private var amountStyle1 = false
+    @State private var amountStyle2 = false
+    @State private var amountStyle3 = false
     
     var amountStyling:Bool {
         
@@ -68,57 +71,79 @@ struct AddView: View {
     @State var isEditingTrue = false
     @State var textEditing = "Enter Amount"
     
-    let types = ["Personal", "Business"]
+    
     
     
     
     var body: some View {
         NavigationStack {
             
-            Form {
-                TextField("Name", text: $name)
-                
-                Picker("Type", selection: $type) {
-                    ForEach(types, id:\.self) {
-                        items in
-                        Text(items)
+            VStack {
+                Form {
+                    TextField("Name", text: $name)
+                    
+                    Picker("Type", selection: $type) {
+                        ForEach(types, id:\.self) {
+                            items in
+                            Text(items)
+                        }
+                    }.pickerStyle(.segmented)
+                    
+                    DatePicker(selection: $date) {
+                        Text("Enter date")
                     }
-                }.pickerStyle(.segmented)
-                
-                
-                TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).focused($enterAmount, equals: .amount)
+                    
+                    //                    if type == "Business" {
+                    //                        businessPicker()
+                    //                    }
+                    //                    else {
+                    //                        personalPicker()
+                    //                    }
+                    
+                    Picker("Select Category", selection: $selectedCat) {
+                        
+                        if type == "Business" {
+                            ForEach(businessCategoryTypes, id:\.self) {
+                                Text($0)
+                            }
+                        } else {
+                            ForEach(personalCatorgyTypes, id:\.self) {
+                                Text($0)
+                            }
+                        }
+                    }
+                    
+                }
+                .toolbar {
+                    Button{
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+                    
+                    Button {
+                        let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: Date(), category: selectedCat)
+                        
+                        
+                        if type.contains("Personal") {
+                            expenses.personalExpenses.append(item)
+                        }
+                        else {
+                            busExpenses.businessExpenses.append(item)
+                        }
+                        
+                        dismiss()
+                    } label: {
+                        Text("Save")
+                    }
+                    
             }
-            .toolbar {
-                Button{
-                    dismiss()
-                } label: {
-                    Text("Cancel")
+                Section("Enter Amount") {
+                    TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).padding()
                 }
                 
-                Button {
-                    let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount)
-                    
-                    
-//                    if amount.isZero {
-//                        enterAmount = .amount
-//                    }else {
-//                        isEdit(isEditing: isEditingTrue)
-//                    }
-                    
-                    if type.contains("Personal") {
-                        expenses.personalExpenses.append(item)
-                    }
-                    else {
-                        busExpenses.businessExpenses.append(item)
-                        //bizExpenses.businessExpenses.append(item)
-                    }
-                    
-                    dismiss()
-                } label: {
-                    Text("Save")
-                }
-                
             }
+            
             
             
         }.navigationTitle("Add Expense")
@@ -138,26 +163,43 @@ struct AddView: View {
         return selected
     }
     
-//    @discardableResult func isEdit(isEditing: Bool) -> some View {
+//    func catDepict(categorySelection: [String]) -> String {
+//        var selected = ""
 //
-//
-//        let textValue = TextField("Amount", text: $textEditing) { item in
-//            if item == isEditing {
-//                textEditing = ""
-//            }
-//
+//        if type == "Business" {
+//           selected = businessPicker()
 //        }
-//
-//        return textValue
-//
+//        else {
+//            personalPicker()
+//        }
 //    }
     
-}
-
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            AddView(expenses: Expenses(), busExpenses: BusinessExpenses())
+    
+    func personalPicker() -> some View {
+        
+        let personalPicker = Picker("Category", selection: $selectedCat) {
+            ForEach(personalCatorgyTypes, id: \.self) {
+                Text($0)
+            }
+            
         }
+        return personalPicker
+    }
+    
+    func businessPicker() -> some View {
+        let businessPicker = Picker("Category", selection: $selectedCat) {
+            ForEach(businessCategoryTypes, id:\.self) { value in
+                Text(value)
+            }
+            
+        }
+        return businessPicker
     }
 }
+    struct AddView_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationStack {
+                AddView(expenses: Expenses(), busExpenses: BusinessExpenses())
+            }
+        }
+    }
