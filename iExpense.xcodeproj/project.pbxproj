@@ -12,6 +12,7 @@
 		9A2BB11B2917E73C00995529 /* BusinessExpenseSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */; };
 		9A2BB11D2917E7A700995529 /* PersonalExpenseSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */; };
 		9A2BB1242917EE2700995529 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB1232917EE2700995529 /* ContentView.swift */; };
+		9A862E45291DADCC0097CE13 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A862E44291DADCC0097CE13 /* MainScreen.swift */; };
 		9AF151A328EAE60A00BC1D74 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */; };
 		9AF151A728EAE60A00BC1D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF151A628EAE60A00BC1D74 /* Assets.xcassets */; };
 		9AF151AA28EAE60A00BC1D74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF151A928EAE60A00BC1D74 /* Preview Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessExpenseSheet.swift; sourceTree = "<group>"; };
 		9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalExpenseSheet.swift; sourceTree = "<group>"; };
 		9A2BB1232917EE2700995529 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9A862E44291DADCC0097CE13 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		9AF1519F28EAE60A00BC1D74 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
 		9AF151A628EAE60A00BC1D74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,10 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				9A2BB1232917EE2700995529 /* ContentView.swift */,
-				9A2BB1142913C58800995529 /* ExpView.swift */,
-				9AF151B428EC255B00BC1D74 /* AddView.swift */,
-				9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */,
-				9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */,
+				9A862E48291DAF680097CE13 /* MainViews */,
+				9A862E47291DAF2F0097CE13 /* ExpenseBuilder */,
+				9A862E46291DAEE60097CE13 /* BottomSheets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -80,6 +81,32 @@
 				9AF151BA28EF393A00BC1D74 /* Expenses.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A862E46291DAEE60097CE13 /* BottomSheets */ = {
+			isa = PBXGroup;
+			children = (
+				9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */,
+				9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */,
+			);
+			path = BottomSheets;
+			sourceTree = "<group>";
+		};
+		9A862E47291DAF2F0097CE13 /* ExpenseBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				9A2BB1142913C58800995529 /* ExpView.swift */,
+				9AF151B428EC255B00BC1D74 /* AddView.swift */,
+			);
+			path = ExpenseBuilder;
+			sourceTree = "<group>";
+		};
+		9A862E48291DAF680097CE13 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				9A862E44291DADCC0097CE13 /* MainScreen.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 		9AF1519628EAE60A00BC1D74 = {
@@ -192,6 +219,7 @@
 			files = (
 				9A2BB1242917EE2700995529 /* ContentView.swift in Sources */,
 				9AF151BB28EF393A00BC1D74 /* Expenses.swift in Sources */,
+				9A862E45291DADCC0097CE13 /* MainScreen.swift in Sources */,
 				9A2BB1152913C58800995529 /* ExpView.swift in Sources */,
 				9A2BB11B2917E73C00995529 /* BusinessExpenseSheet.swift in Sources */,
 				9AF151B528EC255B00BC1D74 /* AddView.swift in Sources */,
