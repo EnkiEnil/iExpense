@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selectedItem = 1
+    @State private var previousSelectedItem = 1
     @State private var addingCost = false
     @State private var addMenu = false
     @ObservedObject var expenses: Expenses
@@ -20,8 +21,7 @@ struct ContentView: View {
         NavigationStack {
             ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
             TabView(selection: $selectedItem){
-                
-                Text("")    // I want this to display the sheet.
+                Text("")    // display the sheet from here
                     .tabItem {
                         VStack {
                             Text("Add More")
@@ -30,17 +30,22 @@ struct ContentView: View {
                     }
                     .tag(2)
                 
+           
             }
 
             .onChange(of: selectedItem) {
                 if 2 == selectedItem {
                     self.addingCost = true
                 } else {
-                    self.selectedItem = $0
+                    self.previousSelectedItem = $0
                 }
-            }.sheet(isPresented: $addingCost) {
+            } .sheet(isPresented: $addingCost, onDismiss: {
+                self.selectedItem = self.previousSelectedItem
+            }) {
                 AddView(expenses: expenses, busExpenses: bizExpenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
             }
+            .accentColor(Color.orange)
+        
 
 
         } .toolbar {
