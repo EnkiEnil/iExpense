@@ -3,28 +3,68 @@
 //  iExpense
 //
 //  Created by Marcus Arkan on 11/6/22.
-//
+// ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
 
 import SwiftUI
 
 struct ContentView: View {
     
+    @State private var selectedItem = 1
+    @State private var addingCost = false
+    @State private var addMenu = false
+    @ObservedObject var expenses: Expenses
+    @ObservedObject var bizExpenses: BusinessExpenses
     
     var body: some View {
         
         NavigationStack {
-            NavigationStack {
+            ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
+            TabView(selection: $selectedItem){
                 
-                ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
-             
-                Spacer()
+                Text("")    // I want this to display the sheet.
+                    .tabItem {
+                        VStack {
+                            Text("Add More")
+                            Image(systemName: "plus.circle")}
+                        
+                    }
+                    .tag(2)
+                
             }
+
+            .onChange(of: selectedItem) {
+                if 2 == selectedItem {
+                    self.addingCost = true
+                } else {
+                    self.selectedItem = $0
+                }
+            }.sheet(isPresented: $addingCost) {
+                AddView(expenses: expenses, busExpenses: bizExpenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
+            }
+
+
+        } .toolbar {
+            Button {
+                addMenu.toggle()
+            } label: {
+                Text("Menu")
+                Image(systemName: "list.dash")
+            }
+        }.sheet(isPresented: $addMenu) {
+            testSheet.presentationDetents([.fraction(0.7), .large, .medium])
+        }
+    }
+    var testSheet: some View {
+        VStack {
+            Text("Test Sheet")
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationStack {
+            ContentView(expenses: Expenses(), bizExpenses: BusinessExpenses())
+        }
     }
 }

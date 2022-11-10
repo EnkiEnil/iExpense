@@ -15,7 +15,7 @@ struct ExpView: View {
 
     
     //MARK: Boolean Values
-    @State private var addingCost = false
+//    @State private var addingCost = false
     @State private var addingBusinessExpenses = false
     @State private var addingPersonalExpenses = false
     
@@ -115,7 +115,7 @@ struct ExpView: View {
     
     var body: some View {
         
-        NavigationStack {
+        TabView {
         
         VStack {
             Section {
@@ -178,17 +178,7 @@ struct ExpView: View {
         }
         
     }.navigationTitle("iExpense")
-        .toolbar {
-            Button {
-                addingCost = true
-            } label: {
-                Text("Add")
-                Image(systemName: "plus")
-            }
-            .sheet(isPresented: $addingCost) {
-                AddView(expenses: expenses, busExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
-            }
-        }
+        
     }
     
     func reducePersonal() -> Double {
