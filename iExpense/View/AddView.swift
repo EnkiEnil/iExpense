@@ -24,7 +24,7 @@ struct AddView: View {
     @State private var type = "Personal"
     @State private var amount = 0.0
     @State private var date = Date()
-    @State private var selectedCat = "No Category Selected"
+    @State private var selectedCat = "None"
     
     let businessCategoryTypes = ["None", "Office supplies", "Wages", "Taxes"]
     let personalCatorgyTypes = ["None", "Food", "Housing", "Fun"]
@@ -77,72 +77,65 @@ struct AddView: View {
     
     var body: some View {
         NavigationStack {
-            
-            VStack {
-                Form {
-                    TextField("Name", text: $name)
-                    
-                    Picker("Type", selection: $type) {
-                        ForEach(types, id:\.self) {
-                            items in
-                            Text(items)
-                        }
-                    }.pickerStyle(.segmented)
-                    
-                    DatePicker(selection: $date) {
-                        Text("Enter date")
-                    }
-                    
-                    //                    if type == "Business" {
-                    //                        businessPicker()
-                    //                    }
-                    //                    else {
-                    //                        personalPicker()
-                    //                    }
-                    
-                    Picker("Select Category", selection: $selectedCat) {
+                VStack {
+                    Form {
+                        TextField("Name", text: $name)
                         
-                        if type == "Business" {
-                            ForEach(businessCategoryTypes, id:\.self) {
-                                Text($0)
+                        Picker("Type", selection: $type) {
+                            ForEach(types, id:\.self) {
+                                items in
+                                Text(items)
                             }
-                        } else {
-                            ForEach(personalCatorgyTypes, id:\.self) {
-                                Text($0)
+                        }.pickerStyle(.segmented)
+                        
+                        DatePicker(selection: $date) {
+                            Text("Enter date")
+                        }
+                        
+                        Picker("Select Category", selection: $selectedCat) {
+                            
+                            if type == "Business" {
+                                ForEach(businessCategoryTypes, id:\.self) {
+                                    Text($0)
+                                }
+                            } else {
+                                ForEach(personalCatorgyTypes, id:\.self) {
+                                    Text($0)
+                                }
                             }
                         }
+                        
+                        
+                    }
+                    .toolbar {
+                        Button{
+                            dismiss()
+                        } label: {
+                            Text("Cancel")
+                        }
+                        
+                        Button {
+                            let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: Date(), category: selectedCat)
+                            
+                            
+                            if type.contains("Personal") {
+                                expenses.personalExpenses.append(item)
+                            }
+                            else {
+                                busExpenses.businessExpenses.append(item)
+                            }
+                            
+                            dismiss()
+                        } label: {
+                            Text("Save")
+                        }
+                        
+                }
+                    Section("Enter Amount") {
+                        TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).padding()
                     }
                     
                 }
-                .toolbar {
-                    Button{
-                        dismiss()
-                    } label: {
-                        Text("Cancel")
-                    }
-                    
-                    Button {
-                        let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: Date(), category: selectedCat)
-                        
-                        
-                        if type.contains("Personal") {
-                            expenses.personalExpenses.append(item)
-                        }
-                        else {
-                            busExpenses.businessExpenses.append(item)
-                        }
-                        
-                        dismiss()
-                    } label: {
-                        Text("Save")
-                    }
-                    
-            }
-                Section("Enter Amount") {
-                    TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).padding()
-                }
-                
-            }
             
             
             
@@ -162,18 +155,7 @@ struct AddView: View {
         
         return selected
     }
-    
-//    func catDepict(categorySelection: [String]) -> String {
-//        var selected = ""
-//
-//        if type == "Business" {
-//           selected = businessPicker()
-//        }
-//        else {
-//            personalPicker()
-//        }
-//    }
-    
+
     
     func personalPicker() -> some View {
         
