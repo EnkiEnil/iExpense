@@ -14,6 +14,7 @@
 		9A2BB1242917EE2700995529 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB1232917EE2700995529 /* ContentView.swift */; };
 		9A76049B291E55EA00599EEE /* MonthOverMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */; };
 		9A76049D291E5AE700599EEE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76049C291E5AE700599EEE /* Extensions.swift */; };
+		9A76049F291E6FF400599EEE /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76049E291E6FF400599EEE /* SettingsMenu.swift */; };
 		9A862E45291DADCC0097CE13 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A862E44291DADCC0097CE13 /* MainScreen.swift */; };
 		9AF151A328EAE60A00BC1D74 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */; };
 		9AF151A728EAE60A00BC1D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF151A628EAE60A00BC1D74 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		9A2BB1232917EE2700995529 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthOverMonthView.swift; sourceTree = "<group>"; };
 		9A76049C291E5AE700599EEE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9A76049E291E6FF400599EEE /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
 		9A862E44291DADCC0097CE13 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		9AF1519F28EAE60A00BC1D74 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				9A862E44291DADCC0097CE13 /* MainScreen.swift */,
 				9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */,
+				9A76049E291E6FF400599EEE /* SettingsMenu.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A76049F291E6FF400599EEE /* SettingsMenu.swift in Sources */,
 				9A2BB1242917EE2700995529 /* ContentView.swift in Sources */,
 				9AF151BB28EF393A00BC1D74 /* Expenses.swift in Sources */,
 				9A862E45291DADCC0097CE13 /* MainScreen.swift in Sources */,
