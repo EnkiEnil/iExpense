@@ -29,24 +29,16 @@ struct ExpView: View {
     
     var bizAmount:Double {
         
-        var amount = 0.0
-        
-        for i in bizExpenses.businessExpenses {
-            amount = i.amount
-        }
+        let amount = reduceBusiness()
         
         return amount
     }
     
     var personalAmount:Double {
         
-        var amounts = 0.0
+        let amount = reducePersonal()
         
-        for i in expenses.personalExpenses {
-            amounts = i.amount
-        }
-        
-        return amounts
+        return amount
     }
     
     //MARK: Boolean for Biz styling
@@ -141,7 +133,7 @@ struct ExpView: View {
                                             }
                                         }
                                 }.sheet(isPresented: $addingPersonalExpenses) {
-                                    PersonalExpenseSheet(expenses: expenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                    PersonalExpenseSheet(expenses: expenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
                             }
           
                         }
@@ -168,7 +160,7 @@ struct ExpView: View {
                                     }
                                 })
                                 .sheet(isPresented: $addingBusinessExpenses) {
-                                    BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+                                    BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
                                 }
                         }
                         Spacer()
@@ -192,13 +184,13 @@ struct ExpView: View {
     }
     
     func reduceBusiness() -> Double {
-        var storedValues = 0.0
+        var storedValue = 0.0
         
         for value in bizExpenses.businessExpenses {
-            storedValues += value.amount
+            storedValue += value.amount
         }
         
-        return storedValues
+        return storedValue
     }
 }
 

@@ -32,6 +32,7 @@ class Expenses: ObservableObject {
     func move(indices: IndexSet, newOffset: Int ) {
         personalExpenses.move(fromOffsets: indices, toOffset: newOffset)
     }
+
 }
 
 class BusinessExpenses: ObservableObject {

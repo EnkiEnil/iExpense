@@ -12,10 +12,15 @@
 		9A2BB11B2917E73C00995529 /* BusinessExpenseSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */; };
 		9A2BB11D2917E7A700995529 /* PersonalExpenseSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */; };
 		9A2BB1242917EE2700995529 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2BB1232917EE2700995529 /* ContentView.swift */; };
+		9A664E3529227AA100D8D2EE /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A664E3429227AA100D8D2EE /* MenuHeader.swift */; };
+		9A664E372922840B00D8D2EE /* SideMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A664E362922840B00D8D2EE /* SideMenuOptions.swift */; };
+		9A664E392922845000D8D2EE /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A664E382922845000D8D2EE /* StatusView.swift */; };
 		9A76049B291E55EA00599EEE /* MonthOverMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */; };
 		9A76049D291E5AE700599EEE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76049C291E5AE700599EEE /* Extensions.swift */; };
 		9A76049F291E6FF400599EEE /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A76049E291E6FF400599EEE /* SettingsMenu.swift */; };
-		9A862E45291DADCC0097CE13 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A862E44291DADCC0097CE13 /* MainScreen.swift */; };
+		9A7604A3292265EE00599EEE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7604A2292265EE00599EEE /* Menu.swift */; };
+		9AB919FB292298AF00E3F49A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB919FA292298AF00E3F49A /* MainTabView.swift */; };
+		9AB91A0029229CCE00E3F49A /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB919FF29229CCE00E3F49A /* ToolBar.swift */; };
 		9AF151A328EAE60A00BC1D74 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */; };
 		9AF151A728EAE60A00BC1D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF151A628EAE60A00BC1D74 /* Assets.xcassets */; };
 		9AF151AA28EAE60A00BC1D74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF151A928EAE60A00BC1D74 /* Preview Assets.xcassets */; };
@@ -30,10 +35,15 @@
 		9A2BB11A2917E73C00995529 /* BusinessExpenseSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessExpenseSheet.swift; sourceTree = "<group>"; };
 		9A2BB11C2917E7A700995529 /* PersonalExpenseSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalExpenseSheet.swift; sourceTree = "<group>"; };
 		9A2BB1232917EE2700995529 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9A664E3429227AA100D8D2EE /* MenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
+		9A664E362922840B00D8D2EE /* SideMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptions.swift; sourceTree = "<group>"; };
+		9A664E382922845000D8D2EE /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthOverMonthView.swift; sourceTree = "<group>"; };
 		9A76049C291E5AE700599EEE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9A76049E291E6FF400599EEE /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
-		9A862E44291DADCC0097CE13 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		9A7604A2292265EE00599EEE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		9AB919FA292298AF00E3F49A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		9AB919FF29229CCE00E3F49A /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		9AF1519F28EAE60A00BC1D74 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
 		9AF151A628EAE60A00BC1D74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,8 +75,9 @@
 		9A2BB1132913AFB600995529 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A2BB1232917EE2700995529 /* ContentView.swift */,
-				9A862E48291DAF680097CE13 /* MainViews */,
+				9AB919FE29229CB800E3F49A /* Header */,
+				9AB919F92922989A00E3F49A /* TabView */,
+				9A664E3A29228DE500D8D2EE /* MenuViews */,
 				9A862E47291DAF2F0097CE13 /* ExpenseBuilder */,
 				9A862E46291DAEE60097CE13 /* BottomSheets */,
 			);
@@ -90,6 +101,19 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9A664E3A29228DE500D8D2EE /* MenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				9A7604A2292265EE00599EEE /* Menu.swift */,
+				9A664E3429227AA100D8D2EE /* MenuHeader.swift */,
+				9A664E382922845000D8D2EE /* StatusView.swift */,
+				9A664E362922840B00D8D2EE /* SideMenuOptions.swift */,
+				9A76049E291E6FF400599EEE /* SettingsMenu.swift */,
+				9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */,
+			);
+			path = MenuViews;
+			sourceTree = "<group>";
+		};
 		9A862E46291DAEE60097CE13 /* BottomSheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,14 +132,29 @@
 			path = ExpenseBuilder;
 			sourceTree = "<group>";
 		};
-		9A862E48291DAF680097CE13 /* MainViews */ = {
+		9A862E48291DAF680097CE13 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				9A862E44291DADCC0097CE13 /* MainScreen.swift */,
-				9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */,
-				9A76049E291E6FF400599EEE /* SettingsMenu.swift */,
+				9A2BB1232917EE2700995529 /* ContentView.swift */,
+				9A2BB1132913AFB600995529 /* View */,
 			);
-			path = MainViews;
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		9AB919F92922989A00E3F49A /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				9AB919FA292298AF00E3F49A /* MainTabView.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		9AB919FE29229CB800E3F49A /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				9AB919FF29229CCE00E3F49A /* ToolBar.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		9AF1519628EAE60A00BC1D74 = {
@@ -138,10 +177,10 @@
 			isa = PBXGroup;
 			children = (
 				9AF151A228EAE60A00BC1D74 /* iExpenseApp.swift */,
+				9A862E48291DAF680097CE13 /* MainView */,
 				9A2BB1122913AFAC00995529 /* Model */,
 				9A2BB125291926FF00995529 /* ViewModel */,
 				9A2BB11E2917EB7800995529 /* Extensions */,
-				9A2BB1132913AFB600995529 /* View */,
 				9AF151A628EAE60A00BC1D74 /* Assets.xcassets */,
 				9AF151A828EAE60A00BC1D74 /* Preview Content */,
 			);
@@ -228,13 +267,18 @@
 			files = (
 				9A76049F291E6FF400599EEE /* SettingsMenu.swift in Sources */,
 				9A2BB1242917EE2700995529 /* ContentView.swift in Sources */,
+				9A7604A3292265EE00599EEE /* Menu.swift in Sources */,
+				9A664E3529227AA100D8D2EE /* MenuHeader.swift in Sources */,
 				9AF151BB28EF393A00BC1D74 /* Expenses.swift in Sources */,
-				9A862E45291DADCC0097CE13 /* MainScreen.swift in Sources */,
+				9A664E372922840B00D8D2EE /* SideMenuOptions.swift in Sources */,
 				9A76049B291E55EA00599EEE /* MonthOverMonthView.swift in Sources */,
+				9AB91A0029229CCE00E3F49A /* ToolBar.swift in Sources */,
 				9A2BB1152913C58800995529 /* ExpView.swift in Sources */,
 				9A2BB11B2917E73C00995529 /* BusinessExpenseSheet.swift in Sources */,
 				9AF151B528EC255B00BC1D74 /* AddView.swift in Sources */,
+				9AB919FB292298AF00E3F49A /* MainTabView.swift in Sources */,
 				9A76049D291E5AE700599EEE /* Extensions.swift in Sources */,
+				9A664E392922845000D8D2EE /* StatusView.swift in Sources */,
 				9AF151A328EAE60A00BC1D74 /* iExpenseApp.swift in Sources */,
 				9AF151B328EC1E2500BC1D74 /* ExpenseItem.swift in Sources */,
 				9A2BB11D2917E7A700995529 /* PersonalExpenseSheet.swift in Sources */,
@@ -364,23 +408,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iExpense/Preview Content\"";
+				DEVELOPMENT_TEAM = S39XSWWVPC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Swift.Loan iExpense";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = loan.swift.iExpense;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = loan.swiftloan.iexpense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -392,23 +441,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iExpense/Preview Content\"";
+				DEVELOPMENT_TEAM = S39XSWWVPC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Swift.Loan iExpense";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = loan.swift.iExpense;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = loan.swiftloan.iexpense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

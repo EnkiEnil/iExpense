@@ -15,3 +15,9 @@ struct ExpenseItem: Identifiable, Equatable, Codable, Hashable {
     var date: Date
     var category: String
 }
+
+struct MenuList: Identifiable {
+    var id = UUID()
+    var userName: String = "@MarkyMark"
+    let profileSettings:[String] = ["Profile", "Settings"]
+}

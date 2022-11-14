@@ -34,15 +34,15 @@ struct MonthOverMonthView: View {
             }
         }
     }
-
-func lastMonthSpend(num: [Double]) -> Double {
-    
-    var total = Double()
-    
-    
-    
-    return total
-}
+//
+//func lastMonthSpend(num: [Double]) -> Double {
+//
+//    var total = Double()
+//
+//
+//
+//    return total
+//}
 
 func nextMonthView(date: Date) -> String {
     
