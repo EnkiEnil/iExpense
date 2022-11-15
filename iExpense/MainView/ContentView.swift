@@ -4,7 +4,7 @@ struct ContentView: View {
     
     //MARK: State bool
     @State private var isShowing: Bool = false
-    
+    //MARK: StateObjects
     @StateObject var expenses =  Expenses()
     @StateObject var bizExpenses = BusinessExpenses()
     
