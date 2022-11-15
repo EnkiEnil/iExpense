@@ -22,13 +22,15 @@ struct ContentView: View {
             VStack {
                 if isShowing {
                     Menu()
+                        
                 }
                 
                 ExpView(expenses: Expenses(), bizExpenses: BusinessExpenses())
-                    .offset(x: isShowing ? 0: 0, y: isShowing ? 40: 0)
+                    .offset(x: isShowing ? 200: 0, y: isShowing ? 40: 0)
                     .opacity(isShowing ? 0.33 : 1)
                 
                 ToolBar(isShowing: $isShowing, expenses: expenses, bizExpenses: bizExpenses)
+                    .offset(x: isShowing ? 200: 0, y: isShowing ? 0: 0)
             }
         }
     }

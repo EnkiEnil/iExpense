@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ExpenseItem: Identifiable, Equatable, Codable, Hashable {
-    var id = UUID()
+struct ExpenseItem: Identifiable, Codable, Hashable {
+    var id = UUID().uuidString
     var name: String
     var type: String
     var amount = 0.0
@@ -20,4 +20,9 @@ struct MenuList: Identifiable {
     var id = UUID()
     var userName: String = "@MarkyMark"
     let profileSettings:[String] = ["Profile", "Settings"]
+}
+
+struct MyItem: Identifiable {
+    var name: String
+    let id = UUID()
 }

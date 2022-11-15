@@ -35,12 +35,8 @@ struct BusinessExpenseSheet: View {
                             
                             Text(businessItems.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")).expenseStyle(for: businessItems)
                         }
-                    }.onDelete(perform: {
-                        IndexSet in
-                        bizExpenses.removeBusiness(at: IndexSet)
-                    }).onMove { IndexSet, newOffset in
-                        bizExpenses.move(indices: IndexSet, newOffset: newOffset)
-                    }
+                    }.onDelete(perform: bizExpenses.removeBusiness)
+                     .onMove(perform: bizExpenses.move)
                 }
             }.toolbar {
                 EditButton()

@@ -19,18 +19,14 @@ struct ExpView: View {
     @State private var addingBusinessExpenses = false
     @State private var addingPersonalExpenses = false
     
-    //MARK: Saved Total Display
-    
-    @State private var savedBusTotal = 0.0
-    @State private var savedPersonalTotal = 0.0
-    
 
     //MARK: Amounts for styling
+
     
     var bizAmount:Double {
-        
+
         let amount = reduceBusiness()
-        
+
         return amount
     }
     
@@ -124,14 +120,8 @@ struct ExpView: View {
                                         .padding()
                                         .background(amountStyling ? .green : amountStyling_2 ? .orange : amountStyling_3 ? .purple : .black)
                                         .foregroundColor(amountStyling ? .white : amountStyling_2 ? .white : amountStyling_3 ? .white : .white)
-                                        .cornerRadius(10).onReceive(expenses.$personalExpenses) {
-                                            $0.forEach { item in
-                                                savedPersonalTotal = item.amount
-                                            }
-                                        }.onChange(of: expenses.personalExpenses) {
-                                            $0.forEach { savedPersonalTotal = $0.amount
-                                            }
-                                        }
+                                        .cornerRadius(10)
+
                                 }.sheet(isPresented: $addingPersonalExpenses) {
                                     PersonalExpenseSheet(expenses: expenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
                             }
@@ -150,24 +140,18 @@ struct ExpView: View {
                                         .padding()
                                         .background(bizAmountStyling ? .green : bizAmountStyling2 ? .orange : bizAmountStyling3 ? .purple : .black)
                                         .foregroundColor(bizAmountStyling ? .white : bizAmountStyling2 ? .white : bizAmountStyling3 ? .white : .white)
-                                        .cornerRadius(10).onReceive(bizExpenses.$businessExpenses) {
-                                            $0.forEach { item in
-                                                savedBusTotal = item.amount
-                                            }
+                                        .cornerRadius(10)
                                         }
-                                }.onChange(of: bizExpenses.businessExpenses, perform: {
-                                    $0.forEach { savedBusTotal = $0.amount
-                                    }
-                                })
-                                .sheet(isPresented: $addingBusinessExpenses) {
-                                    BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
+
+                                        .sheet(isPresented: $addingBusinessExpenses) {
+                                            BusinessExpenseSheet(bizExpenses: bizExpenses).presentationDetents([.fraction(0.8),.medium, .large]).presentationDragIndicator(.visible)
                                 }
                         }
                         Spacer()
                     }
                 }
             }
-        }
+        }.frame(width: 500, height: 500)
         
     }.navigationTitle("iExpense")
         

@@ -25,10 +25,18 @@ class Expenses: ObservableObject {
         }
         personalExpenses = []
     }
+    
+    //trying different delete functions
+    func delete(item data: ExpenseItem) {
+        if let index = personalExpenses.firstIndex(where: {$0.id == data.id}) {
+            personalExpenses.remove(at: index)
+        }
+    }
     func removePersonal(at onset: IndexSet) {
         personalExpenses.remove(atOffsets: onset)
     }
     
+    // move function
     func move(indices: IndexSet, newOffset: Int ) {
         personalExpenses.move(fromOffsets: indices, toOffset: newOffset)
     }
@@ -54,10 +62,12 @@ class BusinessExpenses: ObservableObject {
         businessExpenses = []
         
     }
+    // delete function
     func removeBusiness(at onset: IndexSet) {
         businessExpenses.remove(atOffsets: onset)
     }
     
+    // move function
     func move(indices: IndexSet, newOffset: Int ) {
         businessExpenses.move(fromOffsets: indices, toOffset: newOffset)
     }

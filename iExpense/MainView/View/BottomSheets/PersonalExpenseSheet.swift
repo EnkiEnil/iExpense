@@ -34,14 +34,8 @@ struct PersonalExpenseSheet: View {
                             
                             Text(personalItems.amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")).expenseStyle(for: personalItems)
                         }
-                    }.onDelete(perform: {
-                        IndexSet in
-                        expenses.removePersonal(at: IndexSet)
-                    })
-                    .onMove(perform: {
-                        IndexSet, newOffset in
-                        expenses.move(indices: IndexSet, newOffset: newOffset)
-                    })
+                    }.onDelete(perform: expenses.removePersonal)
+                     .onMove(perform: expenses.move)
                 }
             }.toolbar {
                 EditButton()
