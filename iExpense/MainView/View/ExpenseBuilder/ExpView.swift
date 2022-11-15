@@ -1,14 +1,8 @@
-//
-//  ExpView.swift
-//  iExpense
-//
-//  Created by Marcus Arkan on 11/3/22.
-//
-
 import SwiftUI
 
 
 struct ExpView: View {
+    
     //MARK: StateObjects
     @ObservedObject var expenses: Expenses
     @ObservedObject var bizExpenses: BusinessExpenses

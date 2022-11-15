@@ -1,10 +1,3 @@
-//
-//  Expenses.swift
-//  iExpense
-//
-//  Created by Marcus Arkan on 10/4/22.
-//
-
 import Foundation
 
 class Expenses: ObservableObject {
@@ -25,13 +18,7 @@ class Expenses: ObservableObject {
         }
         personalExpenses = []
     }
-    
-    //trying different delete functions
-    func delete(item data: ExpenseItem) {
-        if let index = personalExpenses.firstIndex(where: {$0.id == data.id}) {
-            personalExpenses.remove(at: index)
-        }
-    }
+    //delete item
     func removePersonal(at onset: IndexSet) {
         personalExpenses.remove(atOffsets: onset)
     }

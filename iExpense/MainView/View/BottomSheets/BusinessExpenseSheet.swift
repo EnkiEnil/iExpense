@@ -1,10 +1,3 @@
-//
-//  BusinessExpenseSheet.swift
-//  iExpense
-//
-//  Created by Marcus Arkan on 11/6/22.
-//
-
 import SwiftUI
 
 struct BusinessExpenseSheet: View {

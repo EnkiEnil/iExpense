@@ -1,9 +1,4 @@
-//
-//  MonthOverMonthView.swift
-//  iExpense
-//
-//  Created by Marcus Arkan on 11/11/22.
-//
+
 
 import SwiftUI
 

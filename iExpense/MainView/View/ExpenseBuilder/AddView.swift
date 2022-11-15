@@ -1,9 +1,3 @@
-//
-//  AddView.swift
-//  iExpense
-//
-
-
 import SwiftUI
 
 struct AddView: View {

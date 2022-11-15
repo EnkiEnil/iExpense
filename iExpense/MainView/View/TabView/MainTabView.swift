@@ -1,9 +1,4 @@
-//
-//  MainTabView.swift
-//  iExpense
-//
-//  Created by Marcus Arkan on 11/14/22.
-//
+
 
 import SwiftUI
 

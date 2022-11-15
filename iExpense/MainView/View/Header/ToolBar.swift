@@ -1,13 +1,9 @@
-//
-//  ToolBar.swift
-//  iExpense
-//
-//  Created by Marcus Arkan on 11/14/22.
-//
 
 import SwiftUI
 
 struct ToolBar: View {
+    
+    
     //MARK: State bool
     @Binding var isShowing: Bool
     
