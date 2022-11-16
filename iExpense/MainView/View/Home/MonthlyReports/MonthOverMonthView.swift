@@ -44,19 +44,6 @@ struct MonthOverMonthView: View {
         }
     }
 
-func lastMonthSpend(num: ExpenseItem) -> Double {
-
-    var total = num.amount
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM-yyyy"
-    let getDateString = dateFormatter.string(from: num.date)
-    let formattedDate = dateFormatter.date(from: getDateString)
-    
-    
-
-    return total
-}
 
 func nextMonthView(date: Date) -> String {
     
@@ -82,22 +69,6 @@ func nextMonthView(date: Date) -> String {
     return month?.formatted(date: .complete, time: .omitted) ?? ""
 }
 
-func previousMonthView(date: ExpenseItem) -> String {
-    
-    var previousDateStored = Calendar.current.date(byAdding: .month, value: -1, to: Date())
-    var personalDates = date.date
-   
-    let previousMonth = Calendar.current.date(byAdding: .month, value: -1, to: personalDates)
-    
-    let month = previousDateStored?.getPreviousMonth()
-    
-    if previousMonth == personalDates {
-        previousDateStored = personalDates
-    }
-    
-    
-    return month?.formatted(date: .complete, time: .omitted) ?? ""
-}
 
 struct MonthOverMonthView_Previews: PreviewProvider {
     static var previews: some View {

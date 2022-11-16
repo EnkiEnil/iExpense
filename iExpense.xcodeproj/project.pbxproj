@@ -75,6 +75,7 @@
 		9A2BB1132913AFB600995529 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9ADC9E792924E74E00F2B536 /* NavMenu */,
 				9ADC9E7A2924E7D300F2B536 /* Home */,
 				9A664E3A29228DE500D8D2EE /* Tool and Tab Views */,
 				9A862E47291DAF2F0097CE13 /* ExpenseBuilder */,
@@ -138,7 +139,6 @@
 		9A862E48291DAF680097CE13 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				9ADC9E772923B52400F2B536 /* ContentView.swift */,
 				9A2BB1132913AFB600995529 /* View */,
 			);
 			path = MainView;
@@ -160,7 +160,7 @@
 			path = ToolBarHeader;
 			sourceTree = "<group>";
 		};
-		9ADC9E792924E74E00F2B536 /* Nav */ = {
+		9ADC9E792924E74E00F2B536 /* NavMenu */ = {
 			isa = PBXGroup;
 			children = (
 				9A7604A2292265EE00599EEE /* Menu.swift */,
@@ -169,13 +169,13 @@
 				9A664E362922840B00D8D2EE /* SideMenuOptions.swift */,
 				9A664E382922845000D8D2EE /* StatusView.swift */,
 			);
-			path = Nav;
+			path = NavMenu;
 			sourceTree = "<group>";
 		};
 		9ADC9E7A2924E7D300F2B536 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9ADC9E792924E74E00F2B536 /* Nav */,
+				9ADC9E772923B52400F2B536 /* ContentView.swift */,
 				9A5F4B452925039700A9C246 /* MonthlyReports */,
 			);
 			path = Home;
