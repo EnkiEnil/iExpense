@@ -75,9 +75,8 @@
 		9A2BB1132913AFB600995529 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9AB919FE29229CB800E3F49A /* Header */,
-				9AB919F92922989A00E3F49A /* TabView */,
-				9A664E3A29228DE500D8D2EE /* MenuViews */,
+				9ADC9E7A2924E7D300F2B536 /* Home */,
+				9A664E3A29228DE500D8D2EE /* Tool and Tab Views */,
 				9A862E47291DAF2F0097CE13 /* ExpenseBuilder */,
 				9A862E46291DAEE60097CE13 /* BottomSheets */,
 			);
@@ -101,17 +100,21 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		9A664E3A29228DE500D8D2EE /* MenuViews */ = {
+		9A5F4B452925039700A9C246 /* MonthlyReports */ = {
 			isa = PBXGroup;
 			children = (
-				9A7604A2292265EE00599EEE /* Menu.swift */,
-				9A664E3429227AA100D8D2EE /* MenuHeader.swift */,
 				9A76049A291E55EA00599EEE /* MonthOverMonthView.swift */,
-				9A76049E291E6FF400599EEE /* SettingsMenu.swift */,
-				9A664E362922840B00D8D2EE /* SideMenuOptions.swift */,
-				9A664E382922845000D8D2EE /* StatusView.swift */,
 			);
-			path = MenuViews;
+			path = MonthlyReports;
+			sourceTree = "<group>";
+		};
+		9A664E3A29228DE500D8D2EE /* Tool and Tab Views */ = {
+			isa = PBXGroup;
+			children = (
+				9AB919FE29229CB800E3F49A /* ToolBarHeader */,
+				9AB919F92922989A00E3F49A /* TabView */,
+			);
+			path = "Tool and Tab Views";
 			sourceTree = "<group>";
 		};
 		9A862E46291DAEE60097CE13 /* BottomSheets */ = {
@@ -149,12 +152,33 @@
 			path = TabView;
 			sourceTree = "<group>";
 		};
-		9AB919FE29229CB800E3F49A /* Header */ = {
+		9AB919FE29229CB800E3F49A /* ToolBarHeader */ = {
 			isa = PBXGroup;
 			children = (
 				9AB919FF29229CCE00E3F49A /* ToolBar.swift */,
 			);
-			path = Header;
+			path = ToolBarHeader;
+			sourceTree = "<group>";
+		};
+		9ADC9E792924E74E00F2B536 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				9A7604A2292265EE00599EEE /* Menu.swift */,
+				9A664E3429227AA100D8D2EE /* MenuHeader.swift */,
+				9A76049E291E6FF400599EEE /* SettingsMenu.swift */,
+				9A664E362922840B00D8D2EE /* SideMenuOptions.swift */,
+				9A664E382922845000D8D2EE /* StatusView.swift */,
+			);
+			path = Nav;
+			sourceTree = "<group>";
+		};
+		9ADC9E7A2924E7D300F2B536 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9ADC9E792924E74E00F2B536 /* Nav */,
+				9A5F4B452925039700A9C246 /* MonthlyReports */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		9AF1519628EAE60A00BC1D74 = {

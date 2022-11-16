@@ -23,6 +23,8 @@ struct ContentView: View {
                 
                 ToolBar(isShowing: $isShowing, expenses: expenses, bizExpenses: bizExpenses)
                     .offset(x: isShowing ? 200: 0, y: isShowing ? 0: 0)
+                
+                
             }
         }
     }

@@ -109,7 +109,7 @@ struct AddView: View {
                         }
                         
                         Button {
-                            let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: Date(), category: selectedCat)
+                            let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: date, category: selectedCat)
                             
                             
                             if type.contains("Personal") {

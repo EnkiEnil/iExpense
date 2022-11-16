@@ -1,43 +1,62 @@
-
-
 import SwiftUI
 
 
 struct MonthOverMonthView: View {
+    
     @ObservedObject var expenses: Expenses
     @ObservedObject var bizExpenses: BusinessExpenses
     
-    var currentMonth: Date {
-        let data = expenses.personalExpenses
-        var dateSaved = Date()
-        for i in data {
-            dateSaved = i.date
-        }
-        return dateSaved
-    }
+    //MARK: Logic Properties
     
+    var previousMonth: String {
+        //Getting the current month from array
+        var currentMonth: Date {
+            let data = expenses.personalExpenses
+            var dateSaved = Date()
+            for i in data {
+                dateSaved = i.date
+            }
+            return dateSaved
+        }
+        //From the current month we obtain the previous month
+        let previousMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentMonth)
+        ////let month = previousMonth?.getPreviousMonth()
+        //Formatting date below (havent appended to the output yet)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        guard let lastmonth = previousMonth else { return "No Date" }
+        
+        let getDate = dateFormatter.string(from: lastmonth )
+        
+        return getDate
+    }
     
     var body: some View {
         NavigationStack {
             
         
                 VStack {
-                    Text("Previous Month: \(previousMonthView(date: currentMonth))")
-                    Text("NextMonth: \(nextMonthView(date:currentMonth))")
-                    
+
+                    Text("\(previousMonth)")
+         
                 }
             }
         }
     }
-//
-//func lastMonthSpend(num: [Double]) -> Double {
-//
-//    var total = Double()
-//
-//
-//
-//    return total
-//}
+
+func lastMonthSpend(num: ExpenseItem) -> Double {
+
+    var total = num.amount
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM-yyyy"
+    let getDateString = dateFormatter.string(from: num.date)
+    let formattedDate = dateFormatter.date(from: getDateString)
+    
+    
+
+    return total
+}
 
 func nextMonthView(date: Date) -> String {
     
@@ -63,17 +82,10 @@ func nextMonthView(date: Date) -> String {
     return month?.formatted(date: .complete, time: .omitted) ?? ""
 }
 
-func previousMonthView(date: Date) -> String {
+func previousMonthView(date: ExpenseItem) -> String {
     
-    let personal = Expenses()
-    var previousDateStored = NSCalendar.current.date(byAdding: .month, value: -1, to: Date())
-    var personalDates: Date {
-        var dateFound = date
-        for i in personal.personalExpenses {
-            dateFound = i.date
-        }
-        return dateFound
-    }
+    var previousDateStored = Calendar.current.date(byAdding: .month, value: -1, to: Date())
+    var personalDates = date.date
    
     let previousMonth = Calendar.current.date(byAdding: .month, value: -1, to: personalDates)
     
