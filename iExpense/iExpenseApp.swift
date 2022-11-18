@@ -17,7 +17,7 @@ struct iExpenseApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-               ContentView(expenses: personalExpenses, bizExpenses: businessExpenses)
+                ContentView(expenses: personalExpenses, bizExpenses: businessExpenses)
             }
         }
     }

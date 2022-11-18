@@ -20,9 +20,15 @@ struct ContentView: View {
                 ExpView(expenses: expenses, bizExpenses: bizExpenses)
                     .offset(x: isShowing ? 200: 0, y: isShowing ? 40: 0)
                     .opacity(isShowing ? 0.33 : 1)
+                HStack {
+                    LastMonthSpending_Personal(expenses: expenses).padding(.trailing, 30)
+                    LastMonthSpending_business(businessExpenses: bizExpenses).padding(.trailing, 10)
+                }
                 
                 ToolBar(isShowing: $isShowing, expenses: expenses, bizExpenses: bizExpenses)
                     .offset(x: isShowing ? 200: 0, y: isShowing ? 0: 0)
+                
+               
                 
                 
             }
