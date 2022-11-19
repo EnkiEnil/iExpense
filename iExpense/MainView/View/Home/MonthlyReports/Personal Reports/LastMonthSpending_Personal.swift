@@ -11,7 +11,7 @@ struct LastMonthSpending_Personal: View {
     @ObservedObject var expenses: Expenses
     var body: some View {
         VStack {
-            HStack {
+            Section("Personal"){
                 Text("Last Month").font(.headline)
                 Text("\(lastMonthExpenses(), format: .currency(code: "USD"))").padding().background(.blue).cornerRadius(10).foregroundColor(.white)
             }
