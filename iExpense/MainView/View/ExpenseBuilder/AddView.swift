@@ -14,7 +14,7 @@ struct AddView: View {
     
     //MARK: Expenses Properties
     
-    @State private var name:String = String()
+    @State private var name = ""
     @State private var type = "Personal"
     @State private var amount:Double = Double()
     @State private var date = Date()
@@ -121,31 +121,15 @@ struct AddView: View {
                             let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: date, category: selectedCat)
                             
                             
+                        
                             
-                            
-                            let nameIsValid = !name.isEmpty
-                            var amountIsValid: Bool {
-                                if amount == 0.0 {
-                                    return true
-                                }
-                                return Bool()
-                            }
-                            
-                            if nameIsValid && amountIsValid {
                                 if type.contains("Personal") {
                                     expenses.personalExpenses.append(item)
                                 }
                                 else {
                                     busExpenses.businessExpenses.append(item)
                                 }
-                            } else if nameIsValid {
-                                isName = false
-                                isAmount = true
-                            } else {
-                                isName = true
-                                isAmount = false
-                            }
-                            
+                    
                             dismiss()
                         } label: {
                             Text("Save")
