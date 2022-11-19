@@ -14,9 +14,9 @@ struct AddView: View {
     
     //MARK: Expenses Properties
     
-    @State private var name = ""
+    @State private var name:String = String()
     @State private var type = "Personal"
-    @State private var amount = 0.0
+    @State private var amount:Double = Double()
     @State private var date = Date()
     @State private var selectedCat = "None"
     
@@ -30,6 +30,14 @@ struct AddView: View {
     @State private var amountStyle1 = false
     @State private var amountStyle2 = false
     @State private var amountStyle3 = false
+    
+    //MARK: Focus States
+    
+    @FocusState var isName:Bool
+    @FocusState var isPicker:Bool
+    @FocusState var isDate: Bool
+    @FocusState var isCategory: Bool
+    @FocusState var isAmount: Bool
     
     var amountStyling:Bool {
         
@@ -73,7 +81,7 @@ struct AddView: View {
         NavigationStack {
                 VStack {
                     Form {
-                        TextField("Name", text: $name)
+                        TextField("Name", text: $name).focused($isName)
                         
                         Picker("Type", selection: $type) {
                             ForEach(types, id:\.self) {
@@ -81,6 +89,7 @@ struct AddView: View {
                                 Text(items)
                             }
                         }.pickerStyle(.segmented)
+                         
                         
                         DatePicker(selection: $date) {
                             Text("Enter date")
@@ -112,11 +121,29 @@ struct AddView: View {
                             let item = ExpenseItem(name: name, type: typeDepict(typeSelection: types), amount: amount, date: date, category: selectedCat)
                             
                             
-                            if type.contains("Personal") {
-                                expenses.personalExpenses.append(item)
+                            
+                            
+                            let nameIsValid = !name.isEmpty
+                            var amountIsValid: Bool {
+                                if amount == 0.0 {
+                                    return true
+                                }
+                                return Bool()
                             }
-                            else {
-                                busExpenses.businessExpenses.append(item)
+                            
+                            if nameIsValid && amountIsValid {
+                                if type.contains("Personal") {
+                                    expenses.personalExpenses.append(item)
+                                }
+                                else {
+                                    busExpenses.businessExpenses.append(item)
+                                }
+                            } else if nameIsValid {
+                                isName = false
+                                isAmount = true
+                            } else {
+                                isName = true
+                                isAmount = false
                             }
                             
                             dismiss()
@@ -126,7 +153,7 @@ struct AddView: View {
                         
                 }
                     Section("Enter Amount") {
-                        TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).padding()
+                        TextField("", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"), prompt: Text(textEditing)).keyboardType(.decimalPad).foregroundColor(amountStyling ? .black : amountStyling_2 ? .white : amountStyling_3 ? .white : .white).padding().background(amountStyling ? .green : amountStyling_2 ? .purple : amountStyling_3 ? .red : .gray).cornerRadius(7).padding().focused($isAmount)
                     }
                     
                 }
@@ -134,6 +161,11 @@ struct AddView: View {
             
             
         }.navigationTitle("Add Expense")
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isName = true
+                }
+            }
         
     }
     
